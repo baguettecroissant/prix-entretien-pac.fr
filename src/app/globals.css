@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
+
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  --font-heading: "Outfit", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  * {
+    @apply border-slate-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-family: var(--font-body);
+  }
+
+  body {
+    @apply bg-white text-slate-800 antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply tracking-tight;
+  }
+
+  .font-mono, code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl;
+  }
+
+  .prose {
+    @apply text-slate-700 leading-relaxed;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-extrabold text-slate-900 mt-8 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-xl font-bold text-slate-900 mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose ul {
+    @apply list-disc pl-6 mb-4 space-y-2;
+  }
+
+  .prose a {
+    @apply text-primary-600 hover:text-primary-500 underline underline-offset-2;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-20;
+  }
+
+  .card {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .btn-primary {
+    @apply bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-700 hover:bg-primary-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-700 to-primary-600;
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-r from-accent-500 to-accent-600;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .price-tag {
+    font-family: var(--font-mono);
+    @apply font-bold text-accent-600;
+  }
+}
