@@ -1,4 +1,5 @@
 import { GuideArticle } from '@/types';
+import { guidesContent } from '@/lib/db/content/guides-content';
 
 export const guidesCategories = {
     'guide-pratique': { label: 'Guides Pratiques', color: 'bg-teal-100 text-teal-700', icon: '📋' },
@@ -8,7 +9,7 @@ export const guidesCategories = {
     'conseil-pro': { label: 'Conseils Pro', color: 'bg-purple-100 text-purple-700', icon: '👷' },
 };
 
-export const guides: GuideArticle[] = [
+const guides: Omit<GuideArticle, 'content'>[] = [
     {
         slug: "prix-entretien-pac-tarifs",
         title: "Prix Entretien PAC 2026 : Tarifs au Détail, Contrats et Comparatif",
@@ -124,18 +125,22 @@ export const guides: GuideArticle[] = [
 ];
 
 export function getGuideBySlug(slug: string): GuideArticle | undefined {
-    return guides.find(g => g.slug === slug);
+    const g = guides.find(g => g.slug === slug);
+    if (!g) return undefined;
+    return { ...g, content: guidesContent[g.slug] || '' };
 }
 
 export function getAllGuides(): GuideArticle[] {
-    return guides;
+    return guides.map(g => ({ ...g, content: guidesContent[g.slug] || '' }));
 }
 
 export function getRelatedGuides(currentSlug: string, limit: number = 4): GuideArticle[] {
     const current = getGuideBySlug(currentSlug);
-    if (!current) return guides.filter(g => g.slug !== currentSlug).slice(0, limit);
+    const all = getAllGuides();
+    if (!current) return all.filter(g => g.slug !== currentSlug).slice(0, limit);
 
-    const sameCategory = guides.filter(g => g.slug !== currentSlug && g.category === current.category);
-    const otherCategory = guides.filter(g => g.slug !== currentSlug && g.category !== current.category);
+    const sameCategory = all.filter(g => g.slug !== currentSlug && g.category === current.category);
+    const otherCategory = all.filter(g => g.slug !== currentSlug && g.category !== current.category);
     return [...sameCategory, ...otherCategory].slice(0, limit);
 }
+

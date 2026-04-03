@@ -37,6 +37,7 @@ export interface GuideArticle {
     updatedDate: string;
     readTime: number;
     tags: string[];
+    content: string;
 }
 
 export interface BrandInfo {

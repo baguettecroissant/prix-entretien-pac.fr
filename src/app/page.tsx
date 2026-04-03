@@ -1,16 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Thermometer, ArrowRight, Shield, Award, Clock, CheckCircle, BookOpen, MapPin, Wrench } from "lucide-react";
 import { getAllGuides } from "@/lib/guides-data";
 import { getAllBrands } from "@/lib/brands-data";
 
 const popularCities = [
-    { name: "Paris", slug: "paris-75000", pop: "2.1M" },
-    { name: "Lyon", slug: "lyon-69000", pop: "522k" },
+    { name: "Paris", slug: "paris-75003", pop: "2.1M" },
+    { name: "Lyon", slug: "lyon-69001", pop: "522k" },
     { name: "Bordeaux", slug: "bordeaux-33000", pop: "260k" },
     { name: "Toulouse", slug: "toulouse-31000", pop: "504k" },
     { name: "Nantes", slug: "nantes-44000", pop: "320k" },
-    { name: "Marseille", slug: "marseille-13000", pop: "873k" },
+    { name: "Marseille", slug: "marseille-13001", pop: "873k" },
     { name: "Strasbourg", slug: "strasbourg-67000", pop: "287k" },
     { name: "Lille", slug: "lille-59000", pop: "236k" },
 ];
@@ -29,7 +30,8 @@ export default function HomePage() {
         <div className="min-h-screen">
             {/* HERO */}
             <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-slate-900 text-white py-20 md:py-28 overflow-hidden">
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiLz48cGF0aCBkPSJNMjAgMjBsMjAgMjBNMjAgMjBMMCA0ME0yMCAyMEwyMCAwTTIwIDIwTDQwIDAiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvc3ZnPg==')] opacity-50"></div>
+                <Image src="/images/hero-homepage.png" alt="Technicien entretien pompe à chaleur" fill className="object-cover opacity-20" priority />
+                <div className="absolute inset-0 bg-gradient-to-b from-primary-900/60 to-slate-900/90"></div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <div className="inline-flex items-center gap-2 bg-accent-500/20 text-accent-300 border border-accent-500/30 px-4 py-1.5 rounded-full text-sm font-bold mb-8">
                         <Shield className="h-4 w-4" /> Obligation légale depuis le décret de juillet 2020

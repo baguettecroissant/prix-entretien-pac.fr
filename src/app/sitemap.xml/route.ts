@@ -11,7 +11,7 @@ export async function GET() {
 
     const sitemapEntries = [
         `<sitemap><loc>${baseUrl}/sitemap/main.xml</loc></sitemap>`,
-        ...departments.map(d => `<sitemap><loc>${baseUrl}/sitemap/${d.code}.xml</loc></sitemap>`),
+        ...departments.map(d => `<sitemap><loc>${baseUrl}/sitemap/${d.code}</loc></sitemap>`),
     ];
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
